@@ -298,7 +298,7 @@ public class Wfs3OpenApiVectorTiles implements Wfs3OpenApiExtension {
             openAPI.getTags().add(new Tag().name("Tiles").description("Access to data (features), partitioned into a hierarchy of tiles."));
 
 
-            if (serviceData != null && serviceData.getFeatureProvider().supportsTransactions()) {
+            if (serviceData != null) {
 
                 openAPI.getPaths().addPathItem("/tilingSchemes", new PathItem().description("something"));  //create a new path
                 PathItem pathItem = openAPI.getPaths().get("/tilingSchemes");
