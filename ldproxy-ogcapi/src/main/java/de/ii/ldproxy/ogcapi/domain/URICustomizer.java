@@ -208,7 +208,7 @@ public class URICustomizer extends URIBuilder {
 
         return this;
     }
-
+/*
     private List<String> getPathSegments() {
         return Splitter.on('/')
                        .omitEmptyStrings()
@@ -219,7 +219,7 @@ public class URICustomizer extends URIBuilder {
         this.setPath("/" + Joiner.on('/')
                            .join(pathSegments));
     }
-
+*/
     public URICustomizer replaceInPath(String original, String replacement) {
         this.setPath(this.getPath().replaceFirst(original, replacement));
         return this;

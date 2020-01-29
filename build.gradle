@@ -1,5 +1,5 @@
 plugins {
-    id 'de.interactive_instruments.xtraplatform-application' version '2.0.3'
+    id 'de.interactive_instruments.xtraplatform-application' version '2.1.1'
     id 'com.jfrog.bintray' version '1.8.4' apply false
     id 'com.github.hierynomus.license-report' version '0.15.0' apply false
 }
@@ -12,29 +12,31 @@ version = '1.4.0'
 
 dependencies {
     // features to include in this application
-    feature group: 'de.interactive_instruments', name: 'xtraplatform-base', version: '2.0.4'
-    feature group: 'de.interactive_instruments', name: 'xtraplatform-store', version: '2.0.10'
-    feature group: 'de.interactive_instruments', name: 'xtraplatform-web', version: '2.0.8'
-    feature group: 'de.interactive_instruments', name: 'xtraplatform-admin', version: '2.0.+'
-    feature group: 'de.interactive_instruments', name: 'xtraplatform-sdi-tools', version: '3.0.+'
-    featureDevOnly group: 'de.interactive_instruments', name: 'xtraplatform-dev', version: '2.0.+'
+    feature group: 'de.interactive_instruments', name: 'xtraplatform-base', version: '2.1.+'
+    feature group: 'de.interactive_instruments', name: 'xtraplatform-store', version: '2.1.+'
+    feature group: 'de.interactive_instruments', name: 'xtraplatform-web', version: '2.1.+'
+    feature group: 'de.interactive_instruments', name: 'xtraplatform-admin', version: '2.1.+'
+    feature group: 'de.interactive_instruments', name: 'xtraplatform-sdi-tools', version: '3.1.+'
+    featureDevOnly group: 'de.interactive_instruments', name: 'xtraplatform-dev', version: '2.1.+'
 
     // bundles to include in this application
     bundle subprojects
 }
-
+/*
 configurations.all {
     resolutionStrategy.cacheDynamicVersionsFor 10, 'minutes'
 
-    resolutionStrategy.force 'de.interactive_instruments:xtraplatform-base:2.0.4', 'de.interactive_instruments:xtraplatform-web:2.0.8', 'de.interactive_instruments:xtraplatform-store:2.0.10', 'de.interactive_instruments:xtraplatform-rest:2.0.4'
+    resolutionStrategy.force 'de.interactive_instruments:xtraplatform-base:2.0.4', 'de.interactive_instruments:xtraplatform-web:2.0.8', 'de.interactive_instruments:xtraplatform-store:2.0.10', 'de.interactive_instruments:xtraplatform-sdi-tools:3.0.2', 'de.interactive_instruments:xtraplatform-crs-api:2.2.2', 'de.interactive_instruments:xtraplatform-feature-provider-api:3.0.0', 'de.interactive_instruments:xtraplatform-feature-provider-sql:3.0.2', 'de.interactive_instruments:xtraplatform-feature-transformer-api:3.0.0'//, 'de.interactive_instruments:xtraplatform-rest:2.0.4'
 }
-
-repositories {
-    maven {
-        url "https://repo.boundlessgeo.com/main/"
-    }
-    maven {
-        url "http://maven.geomajas.org"
+*/
+allprojects {
+    repositories {
+        maven {
+            url "https://repo.boundlessgeo.com/main/"
+        }
+        maven {
+            url "http://maven.geomajas.org"
+        }
     }
 }
 
