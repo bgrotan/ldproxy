@@ -26,7 +26,7 @@ dependencies {
 configurations.all {
     resolutionStrategy.cacheDynamicVersionsFor 10, 'minutes'
 
-    resolutionStrategy.force 'de.interactive_instruments:xtraplatform-base:2.0.4', 'de.interactive_instruments:xtraplatform-web:2.0.8', 'de.interactive_instruments:xtraplatform-store:2.0.10'
+    resolutionStrategy.force 'de.interactive_instruments:xtraplatform-base:2.0.4', 'de.interactive_instruments:xtraplatform-web:2.0.8', 'de.interactive_instruments:xtraplatform-store:2.0.10', 'de.interactive_instruments:xtraplatform-rest:2.0.4'
 }
 
 repositories {
