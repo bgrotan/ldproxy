@@ -12,23 +12,17 @@ version = '1.9.0'
 
 dependencies {
     // features to include in this application
-    feature group: 'de.interactive_instruments', name: 'xtraplatform-base', version: '2.1.+'
-    feature group: 'de.interactive_instruments', name: 'xtraplatform-store', version: '2.1.+'
-    feature group: 'de.interactive_instruments', name: 'xtraplatform-web', version: '2.1.+'
-    feature group: 'de.interactive_instruments', name: 'xtraplatform-admin', version: '2.1.+'
-    feature group: 'de.interactive_instruments', name: 'xtraplatform-sdi-tools', version: '3.1.+'
-    featureDevOnly group: 'de.interactive_instruments', name: 'xtraplatform-dev', version: '2.1.+'
+    feature group: 'de.interactive_instruments', name: 'xtraplatform-base', version: '2.1.0'
+    feature group: 'de.interactive_instruments', name: 'xtraplatform-store', version: '2.1.0'
+    feature group: 'de.interactive_instruments', name: 'xtraplatform-web', version: '2.1.0'
+    feature group: 'de.interactive_instruments', name: 'xtraplatform-admin', version: '2.1.0'
+    feature group: 'de.interactive_instruments', name: 'xtraplatform-sdi-tools', version: '3.1.0'
+    featureDevOnly group: 'de.interactive_instruments', name: 'xtraplatform-dev', version: '2.1.0'
 
     // bundles to include in this application
     bundle subprojects
 }
-/*
-configurations.all {
-    resolutionStrategy.cacheDynamicVersionsFor 10, 'minutes'
 
-    resolutionStrategy.force 'de.interactive_instruments:xtraplatform-base:2.0.4', 'de.interactive_instruments:xtraplatform-web:2.0.8', 'de.interactive_instruments:xtraplatform-store:2.0.10', 'de.interactive_instruments:xtraplatform-sdi-tools:3.0.2', 'de.interactive_instruments:xtraplatform-crs-api:2.2.2', 'de.interactive_instruments:xtraplatform-feature-provider-api:3.0.0', 'de.interactive_instruments:xtraplatform-feature-provider-sql:3.0.2', 'de.interactive_instruments:xtraplatform-feature-transformer-api:3.0.0'//, 'de.interactive_instruments:xtraplatform-rest:2.0.4'
-}
-*/
 allprojects {
     repositories {
         maven {
