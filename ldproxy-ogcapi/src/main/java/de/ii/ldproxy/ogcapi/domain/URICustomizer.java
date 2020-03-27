@@ -1,12 +1,13 @@
 /**
  * Copyright 2020 interactive instruments GmbH
- *
+ * <p>
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 package de.ii.ldproxy.ogcapi.domain;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URIBuilder;
@@ -55,6 +56,26 @@ public class URICustomizer extends URIBuilder {
         return this;
     }
 
+    @Override
+    public URICustomizer setPathSegments(String... pathSegments) {
+        return setPathSegments(Arrays.asList(pathSegments));
+    }
+
+    @Override
+    public URICustomizer setPathSegments(List<String> pathSegments) {
+        List<String> cleanPathSegments = pathSegments;
+
+        if (Objects.nonNull(pathSegments)) {
+            cleanPathSegments = pathSegments.stream()
+                                            .filter(segment -> !Strings.isNullOrEmpty(segment))
+                                            .collect(Collectors.toList());
+        }
+
+        super.setPathSegments(cleanPathSegments);
+
+        return this;
+    }
+
     public URICustomizer ensureParameter(final String parameter, final String value) {
         if (this.getQueryParams()
                 .stream()
@@ -81,7 +102,7 @@ public class URICustomizer extends URIBuilder {
         final List<String> pathSegments = getPathSegments();
 
         return !pathSegments.isEmpty() && pathSegments.get(pathSegments.size() - 1)
-                                                    .equals(segment);
+                                                      .equals(segment);
     }
 
     public String getLastPathSegment() {
@@ -94,7 +115,7 @@ public class URICustomizer extends URIBuilder {
         final List<String> pathSegments = getPathSegments();
 
         if (pathSegments.isEmpty() || !pathSegments.get(pathSegments.size() - 1)
-                                                    .equals(segment)) {
+                                                   .equals(segment)) {
             this.setPathSegments(new ImmutableList.Builder<String>()
                     .addAll(pathSegments)
                     .add(segment)
@@ -181,11 +202,12 @@ public class URICustomizer extends URIBuilder {
         final List<String> pathSegments = getPathSegments();
         final int i = index < 0 ? pathSegments.size() + index : index;
 
-        if (i >= 0 && i < pathSegments.size() && pathSegments.get(i).equals(segment)) {
-                this.setPathSegments(new ImmutableList.Builder<String>()
-                        .addAll(pathSegments.subList(0, i))
-                        .addAll(pathSegments.subList(i+1, pathSegments.size()))
-                        .build());
+        if (i >= 0 && i < pathSegments.size() && pathSegments.get(i)
+                                                             .equals(segment)) {
+            this.setPathSegments(new ImmutableList.Builder<String>()
+                    .addAll(pathSegments.subList(0, i))
+                    .addAll(pathSegments.subList(i + 1, pathSegments.size()))
+                    .build());
         }
         return this;
     }
@@ -210,32 +232,25 @@ public class URICustomizer extends URIBuilder {
         return this;
     }
 
-    /*public List<String> getPathSegments() {
-        return Splitter.on('/')
-                       .omitEmptyStrings()
-                       .splitToList(this.getPath());
-    }
-
-    public void setPathSegments(final List<String> pathSegments) {
-        this.setPath("/" + Joiner.on('/')
-                           .join(pathSegments));
-    }*/
-
     public URICustomizer replaceInPath(String original, String replacement) {
-        this.setPath(this.getPath().replaceFirst(original, replacement));
+        this.setPath(this.getPath()
+                         .replaceFirst(original, replacement));
         return this;
     }
 
     public URICustomizer ensureTrailingSlash() {
-        if (Objects.nonNull(this.getPath()) && !this.getPath().endsWith("/")) {
+        if (Objects.nonNull(this.getPath()) && !this.getPath()
+                                                    .endsWith("/")) {
             this.setPath(this.getPath() + "/");
         }
         return this;
     }
 
     public URICustomizer ensureNoTrailingSlash() {
-        if (Objects.nonNull(this.getPath()) && this.getPath().endsWith("/")) {
-            this.setPath(this.getPath().substring(0,getPath().length()-1));
+        if (Objects.nonNull(this.getPath()) && this.getPath()
+                                                   .endsWith("/")) {
+            this.setPath(this.getPath()
+                             .substring(0, getPath().length() - 1));
         }
         return this;
     }
