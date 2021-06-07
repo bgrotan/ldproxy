@@ -76,6 +76,14 @@ pipeline:
     when:
       event: push
 
+  debug:
+    image: openjdk:11-slim
+    commands:
+      - export
+    secrets: [ docker_username, docker_password]
+    when:
+      event: push
+
   docker-master:
     image: plugins/docker
     pull: true
