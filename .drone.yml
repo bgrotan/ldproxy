@@ -78,6 +78,7 @@ pipeline:
 
   docker-master:
     image: plugins/docker
+    pull: true
     repo: iide/ldproxy
     tags: ${DRONE_COMMIT_BRANCH}
     force_tag: true
