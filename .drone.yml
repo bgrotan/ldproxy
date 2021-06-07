@@ -84,9 +84,10 @@ pipeline:
     dockerfile: build/docker/Dockerfile
     context: build/docker
     secrets: [ docker_username, docker_password]
+    debug: true
     when:
       event: push
-      branch: master
+#      branch: master
 
   docker-release:
     image: plugins/docker
